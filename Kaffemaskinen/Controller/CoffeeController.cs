@@ -9,23 +9,31 @@ namespace Kaffemaskinen.Controller
     {
         public void MainCoffeeController()
         {
-            CoffeeDisplay coffeeDisplay = new CoffeeDisplay();
-            WaterContainerGUI waterContainerGUI = new WaterContainerGUI();
+            //WaterContainer objects
             WaterContainer waterContainer = new WaterContainer();
-            ConsoleKeyInfo key = coffeeDisplay.MainMenu();
+            WaterContainerController waterContainerController = new WaterContainerController();
+            WaterContainerGUI waterContainerGUI = new WaterContainerGUI();
+
+            //Filter objects
+            FilterController filterController = new FilterController();
+            CoffeeFilter coffeeFilter = new CoffeeFilter();
+
+            CoffeeDisplay coffeeDisplay = new CoffeeDisplay();
 
             while (true)
             {
+                ConsoleKeyInfo key = coffeeDisplay.MainMenu();
+
                 switch (key.Key)
                 {
                     case ConsoleKey.D1:
                         {
-                            waterContainer.FillWater(waterContainerGUI.WaterContainerMenu());
-                            //waterContainerGUI.WaterLevel();
+                            waterContainerController.WaterController(waterContainer);
                             break;
                         }
                     case ConsoleKey.D2:
                         {
+                            filterController.Filter();
                             break;
                         }
                     case ConsoleKey.D3:
@@ -34,6 +42,17 @@ namespace Kaffemaskinen.Controller
                         }
                     case ConsoleKey.D4:
                         {
+                            waterContainerGUI.WaterLevel(waterContainer);
+                            break;
+                        }
+                    case ConsoleKey.D5:
+                        {
+                            waterContainerGUI.WaterLevel(waterContainer);
+                            break;
+                        }
+                    case ConsoleKey.D6:
+                        {
+                            waterContainerGUI.WaterLevel(waterContainer);
                             break;
                         }
                     default:
@@ -41,25 +60,8 @@ namespace Kaffemaskinen.Controller
                             break;
                         }
                 }
-                break;
             }
 
-
-            /*
-            IWaterContainer waterContainer = new WaterContainer();
-            IFilter filter = new CoffeeFilter();
-            ICoffeeBeanContainer coffeeBeanContainer = new CoffeeBeanContainer();
-
-            ICoffeeMaker coffeeMaker = new CoffeeMaker(waterContainer, filter, coffeeBeanContainer);
-
-            // Simuler brugerinput
-            waterContainer.FillWater(4);
-            filter.InsertFilter();
-            coffeeBeanContainer.AddBeans(50);
-
-            // Start bryggeprocessen
-            coffeeMaker.BrewCoffee();
-            */
         }
     }
 }

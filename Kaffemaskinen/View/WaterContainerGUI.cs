@@ -6,7 +6,6 @@ namespace Kaffemaskinen.View
 {
     internal class WaterContainerGUI
     {
-        WaterContainer waterContainer = new WaterContainer();
         public int WaterContainerMenu()
         {
             while (true)
@@ -19,19 +18,18 @@ namespace Kaffemaskinen.View
                 try
                 {
                     return int.Parse(Console.ReadLine());
-                    break;
                 }
                 catch
                 {
                     new ErrorMessage("Input not a valid number");
                 }
             }
-            return 0;
         }
 
-        public void WaterLevel()
+        public void WaterLevel(WaterContainer waterContainer)
         {
-            Console.WriteLine(waterContainer.WaterLevel.ToString());
+            Console.Clear();
+            Console.WriteLine(waterContainer.ToString());
             Console.ReadKey();
         }
     }
