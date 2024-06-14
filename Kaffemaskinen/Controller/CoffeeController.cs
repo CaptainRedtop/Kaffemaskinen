@@ -1,5 +1,6 @@
 ﻿using Kaffemaskinen.Interfaces;
 using Kaffemaskinen.Model;
+using Kaffemaskinen.Model.Machines;
 using Kaffemaskinen.View;
 using System;
 
@@ -7,20 +8,22 @@ namespace Kaffemaskinen.Controller
 {
     public class CoffeeController
     {
+        private WaterContainerController waterContainerController;
+        private CoffeeBeanContainerController coffeeBeanContainerController;
+        private FilterController filterController;
+        public CoffeeController(IWaterContainer water, ICoffeeBeanContainer coffeeBeanContainer, IFilter filter)
+        {
+            waterContainerController = new WaterContainerController(water);
+            coffeeBeanContainerController = new CoffeeBeanContainerController(coffeeBeanContainer);
+            filterController = new FilterController(filter);
+        }
+
+        private bool running = true;
         public void MainCoffeeController()
         {
-            //WaterContainer objects
-            WaterContainer waterContainer = new WaterContainer();
-            WaterContainerController waterContainerController = new WaterContainerController();
-            WaterContainerGUI waterContainerGUI = new WaterContainerGUI();
-
-            //Filter objects
-            FilterController filterController = new FilterController();
-            CoffeeFilter coffeeFilter = new CoffeeFilter();
-
             CoffeeDisplay coffeeDisplay = new CoffeeDisplay();
 
-            while (true)
+            while (running == true)
             {
                 ConsoleKeyInfo key = coffeeDisplay.MainMenu();
 
@@ -28,31 +31,42 @@ namespace Kaffemaskinen.Controller
                 {
                     case ConsoleKey.D1:
                         {
-                            waterContainerController.WaterController(waterContainer);
+                            waterContainerController.FillWater();
                             break;
                         }
                     case ConsoleKey.D2:
                         {
-                            filterController.Filter();
+                            filterController.InsertFilter();
                             break;
                         }
                     case ConsoleKey.D3:
                         {
+                            coffeeBeanContainerController.AddBeans();
                             break;
                         }
                     case ConsoleKey.D4:
                         {
-                            waterContainerGUI.WaterLevel(waterContainer);
+                            waterContainerController.CheackWater();
                             break;
                         }
                     case ConsoleKey.D5:
                         {
-                            waterContainerGUI.WaterLevel(waterContainer);
+                            filterController.CheckFilter();
                             break;
                         }
                     case ConsoleKey.D6:
                         {
-                            waterContainerGUI.WaterLevel(waterContainer);
+                            coffeeBeanContainerController.CheckBeans();
+                            break;
+                        }
+                    case ConsoleKey.D7:
+                        {
+
+                            break;
+                        }
+                    case ConsoleKey.Escape:
+                        {
+                            running = false;
                             break;
                         }
                     default:
@@ -61,6 +75,9 @@ namespace Kaffemaskinen.Controller
                         }
                 }
             }
+        }
+        public void BrewCoffee()
+        {
 
         }
     }

@@ -17,7 +17,9 @@ namespace Kaffemaskinen.View
                     "3. Add coffeebeans\n" +
                     "4. Check waterlevel\n" +
                     "5. Check if a filter is inserted\n" +
-                    "6. Check how many coffeebeans are in the grinder");
+                    "6. Check how many coffeebeans are in the grinder\n" +
+                    "7. Brew a cup of coffee\n\n" +
+                    "Press ESC to exit...");
 
                 return Console.ReadKey();
             }

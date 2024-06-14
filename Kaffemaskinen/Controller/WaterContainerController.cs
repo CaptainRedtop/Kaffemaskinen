@@ -1,4 +1,5 @@
-﻿using Kaffemaskinen.Model;
+﻿using Kaffemaskinen.Interfaces;
+using Kaffemaskinen.Model;
 using Kaffemaskinen.View;
 using System;
 
@@ -6,14 +7,26 @@ namespace Kaffemaskinen.Controller
 {
     internal class WaterContainerController
     {
-        WaterContainerGUI waterContainerGUI = new WaterContainerGUI();
-        public void WaterController(WaterContainer waterContainer)
+        WaterContainerView waterContainerGUI = new WaterContainerView();
+        IWaterContainer watercotainer;
+
+        public WaterContainerController(IWaterContainer watercotainer)
         {
-            waterContainer.FillWater(waterContainerGUI.WaterContainerMenu());
+            this.watercotainer = watercotainer;
         }
-        public void WaterError(string error)
+
+        public void FillWater()
         {
-            new ErrorMessage(error);
+            string message = watercotainer.FillWater(waterContainerGUI.WaterContainerMenu());
+
+            if (message != null)
+            {
+                waterContainerGUI.ErrorMessage(message);
+            }
+        }
+        public void CheackWater()
+        {
+            waterContainerGUI.WaterLevel(watercotainer);
         }
     }
 }

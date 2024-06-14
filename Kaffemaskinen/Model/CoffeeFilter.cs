@@ -1,5 +1,4 @@
-﻿using System;
-using Kaffemaskinen.Interfaces;
+﻿using Kaffemaskinen.Interfaces;
 
 namespace Kaffemaskinen.Model
 {
@@ -9,10 +8,17 @@ namespace Kaffemaskinen.Model
 
         public bool HasFilter => hasFilter;
 
-        public void InsertFilter()
+        public string InsertFilter()
         {
-            hasFilter = true;
-            Console.WriteLine("Filter inserted.");
+            if (hasFilter == true)
+            {
+                return "Filter is already inserted";
+            }
+            else
+            {
+                hasFilter = true;
+                return "Insterted filter";
+            }
         }
     }
 }

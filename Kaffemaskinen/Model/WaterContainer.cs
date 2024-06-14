@@ -1,18 +1,17 @@
 ﻿using System;
 using Kaffemaskinen.Controller;
 using Kaffemaskinen.Interfaces;
+using Kaffemaskinen.View;
 
 namespace Kaffemaskinen.Model
 {
-    internal class WaterContainer : IWaterContainer
-    {
-        WaterContainerController controller = new WaterContainerController();
-
+    public class WaterContainer : IWaterContainer
+    { 
         private int waterLevel;
 
         public int WaterLevel => waterLevel;
 
-        public void FillWater(int cups)
+        public string FillWater(int cups)
         {
             if (waterLevel + cups <= 15)
             {
@@ -21,9 +20,15 @@ namespace Kaffemaskinen.Model
             else
             {
                 waterLevel = 15;
-                controller.WaterError("Too much water!!\n" +
+                return ("Too much water!!\n" +
                 "Now there are water all over the table, you donk...");
             }
+            return null;
+        }
+
+        public void CheckWater(WaterContainer waterContainer)
+        {
+            
         }
 
         public override string ToString()

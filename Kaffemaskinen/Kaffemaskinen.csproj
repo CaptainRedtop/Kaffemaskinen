@@ -43,20 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CoffeeBeanContainerController.cs" />
     <Compile Include="Controller\CoffeeController.cs" />
     <Compile Include="Controller\FilterController.cs" />
     <Compile Include="Controller\WaterContainerController.cs" />
     <Compile Include="Interfaces\ICoffeeBeanContainer.cs" />
+    <Compile Include="Interfaces\ICoffeeMachine.cs" />
     <Compile Include="Interfaces\IFilter.cs" />
     <Compile Include="Interfaces\IWaterContainer.cs" />
     <Compile Include="Model\CoffeeBeanContainer.cs" />
     <Compile Include="Model\CoffeeFilter.cs" />
+    <Compile Include="Model\Machines\CoffeeMachine.cs" />
+    <Compile Include="Model\Machines\OldSchoolMachine.cs" />
     <Compile Include="Model\WaterContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\CoffeeBeanView.cs" />
     <Compile Include="View\CoffeeDisplay.cs" />
     <Compile Include="View\ErrorMessage.cs" />
-    <Compile Include="View\WaterContainerGUI.cs" />
+    <Compile Include="View\FilterView.cs" />
+    <Compile Include="View\WaterContainerView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

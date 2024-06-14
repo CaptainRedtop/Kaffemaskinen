@@ -1,10 +1,9 @@
 ﻿using System;
-using Kaffemaskinen.Model;
-using Kaffemaskinen.View;
+using Kaffemaskinen.Interfaces;
 
 namespace Kaffemaskinen.View
 {
-    internal class WaterContainerGUI
+    internal class WaterContainerView
     {
         public int WaterContainerMenu()
         {
@@ -26,10 +25,17 @@ namespace Kaffemaskinen.View
             }
         }
 
-        public void WaterLevel(WaterContainer waterContainer)
+        public void WaterLevel(IWaterContainer waterContainer)
         {
             Console.Clear();
             Console.WriteLine(waterContainer.ToString());
+            Console.ReadKey();
+        }
+
+        public void ErrorMessage(string error)
+        {
+            Console.Clear();
+            Console.WriteLine($"Error: {error}");
             Console.ReadKey();
         }
     }

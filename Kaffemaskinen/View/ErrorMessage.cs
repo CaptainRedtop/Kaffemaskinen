@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kaffemaskinen.View
 {
@@ -12,7 +8,7 @@ namespace Kaffemaskinen.View
         {
             Console.Clear();
             Console.WriteLine(error);
-            Console.WriteLine("Press anything to go back...");
+            Console.WriteLine("\nPress anything to go back...");
             Console.ReadKey();
         }
     }

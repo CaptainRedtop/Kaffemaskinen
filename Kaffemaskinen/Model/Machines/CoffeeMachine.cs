@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kaffemaskinen.Interfaces
+namespace Kaffemaskinen.Model.Machines
 {
-    public interface IFilter
+    internal class CoffeeMachine
     {
-        string InsertFilter();
-        bool HasFilter { get; }
     }
 }

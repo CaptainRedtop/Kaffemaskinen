@@ -8,7 +8,7 @@ namespace Kaffemaskinen.Interfaces
 {
     public interface ICoffeeBeanContainer
     {
-        void AddBeans(int amount);
+        string AddBeans(int amount);
         int BeansLevel { get; }
     }
 }
